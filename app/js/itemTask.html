@@ -1,0 +1,7 @@
+<li class="list-group-item">
+	<div>Task:<span ng-bind="taskName"></span></div>
+	<div>Description:{{taskDescription}}</div>
+	<div class="checkbox">
+	  <label><input type="checkbox" ng-value="true" ng-model="main.item" ng-change="markCompleted()">Completed</label>
+	</div>
+</li>

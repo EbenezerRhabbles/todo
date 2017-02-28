@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+
+<html lan = 'en' ng-app = 'app'>
+
+	<head>
+	    <meta http-equiv='X-UA-COMPATIBLE' content='IE=edge,chrome=1'/>
+	    <link rel="stylesheet" type="text/css"  href="library/bootstrap-3.3.7-dist/css/bootstrap.css"/>
+	    <script type="text/javascript" src='library/jquery-3.1.1/jquery-3.1.1.min.js'></script>
+	    <script type="text/javascript" src='library/bootstrap-3.3.7-dist/js/bootstrap.js'></script>
+	    <script type="text/javascript" src='library/angular-1.6.2/angular.js'></script>
+	    <title>todo</title>
+	</head>
+
+	<body>
+
+		<div class="container" ng-controller='MainController as main' ng-cloak>
+			<div class="row">
+				<div class='col-md-12'>
+					<div class="well">
+						<div class="form-group">
+							<label>Task</label>
+							<input class="form-control" ng-model="main.form.name"/>
+						</div>
+						<div class="form-group">
+							<label>Description</label>
+							<textarea row="2" class="form-control" ng-model="main.form.description"></textarea>
+						</div>
+						<div class="form-group">
+							<label class="checkbox-inline">
+								<input type="radio" name="completed" ng-model="main.form.completed" ng-value="true"/>Completed
+							</label>
+							<label class="checkbox-inline">
+								<input type="radio" name="completed" ng-model="main.form.completed" ng-value="false"/>Not Completed
+							</label>
+						</div>						
+						<button class="btn btn-primary btn-block" ng-click="main.addTask()">Add Task</button>
+					</div>
+					<div class="well">
+						<h1>Things To do</h1>
+						<ul class='list-group'>
+							<div ng-repeat='item in main.items'>
+								<!-- <task  task-name="item.name" task-description="item.description" task-completed="item.completed" task-index="{{$index}}" ng-class="{'list-group-item-danger': !item.completed}"></task> -->
+								<li class="list-group-item">
+									<div>Task:<span ng-bind="item.name"></span></div>
+									<div>Description:{{item.description}}</div>
+									<div class="checkbox">
+									  <label><input type="checkbox" ng-value="true" ng-model="item.completed" ng-change="main.markCompleted($index)">Completed</label>
+									</div>
+								</li>
+							</div>
+						</ul>
+						<h1>Things Done</h1>
+						<ul class='list-group'>
+							<div ng-repeat='item in main.items'>
+								<!-- <task  task-name="item.name" task-description="item.description" task-completed="item.completed" task-index="{{$index}}" ng-class="{'list-group-item-danger': !item.completed}"></task> -->
+								<li class="list-group-item">
+									<div>Task:<span ng-bind="item.name"></span></div>
+									<div>Description:{{item.description}}</div>
+									<div class="checkbox">
+									  <label><input type="checkbox" ng-value="true" ng-model="item.completed" ng-change="main.markCompleted($index)">Completed</label>
+									</div>
+								</li>
+							</div>
+						</ul>
+					</div>
+					<!-- <div class="panel-group">
+					  <div ng-repeat="item in ['list-group-item-success','list-group-item-danger','list-group-item-primary','list-group-item-info']" class="panel {{item}}" >
+					    <div class="panel-body">Panel {{item}} Content</div>
+					  </div>					  
+					</div>  -->
+				</div>
+			</div>
+		</div>	
+
+	</body>
+
+	<script type="text/javascript" src='app/js/app.js'></script>
+
+</html>
